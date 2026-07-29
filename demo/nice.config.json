@@ -1,0 +1,6 @@
+{
+  "schemaRoots": ["nice/schemas"],
+  "contentRoots": ["nice/content"],
+  "styleRoots": ["nice/styles"],
+  "port": 6423
+}

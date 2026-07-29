@@ -1,0 +1,12 @@
+{
+  "name": "nice-demo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Minimal example project with nice installed as a real dependency, with a nice.config.json (matching the plain defaults) to show what one looks like.",
+  "scripts": {
+    "nice": "nice"
+  },
+  "devDependencies": {
+    "nice": "file:.."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$niceSchema": "work-experience-item",
+  "$id": "acme-robotics",
+  "institution": "Acme Robotics",
+  "title": "Senior Software Engineer",
+  "location": "Remote",
+  "dateStarted": "Mar 2023",
+  "dateEnded": "Present",
+  "description": [
+    "Led the migration of the fleet-management dashboard to a modern frontend stack",
+    "Built the internal API used to schedule and monitor warehouse robots"
+  ],
+  "skills": ["TypeScript", "Node.js", "React"]
+}

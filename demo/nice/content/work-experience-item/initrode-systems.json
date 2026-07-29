@@ -1,0 +1,14 @@
+{
+  "$niceSchema": "work-experience-item",
+  "$id": "initrode-systems",
+  "institution": "Initrode Systems",
+  "title": "Software Engineer",
+  "location": "Springfield, USA",
+  "dateStarted": "Jun 2020",
+  "dateEnded": "Feb 2023",
+  "description": [
+    "Maintained a customer-facing billing platform serving several thousand accounts",
+    "Introduced automated integration tests, cutting regression bugs by half"
+  ],
+  "skills": ["JavaScript", "PostgreSQL"]
+}

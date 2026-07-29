@@ -1,0 +1,13 @@
+{
+  "name": "work-experience-item",
+  "label": "Work Experience",
+  "fields": [
+    { "name": "institution", "type": "string" },
+    { "name": "title", "type": "string" },
+    { "name": "location", "type": "string" },
+    { "name": "dateStarted", "type": "string" },
+    { "name": "dateEnded", "type": "string" },
+    { "name": "description", "type": "array", "items": { "type": "string" } },
+    { "name": "skills", "type": "array", "items": { "type": "string" } }
+  ]
+}

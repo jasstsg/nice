@@ -1,0 +1,9 @@
+{
+  "$niceSchema": "resume",
+  "$id": "resume",
+  "summary": "Full-stack engineer with a background in robotics and billing systems.",
+  "work": [
+    { "$niceSchema": "work-experience-item", "$id": "acme-robotics" },
+    { "$niceSchema": "work-experience-item", "$id": "initrode-systems" }
+  ]
+}

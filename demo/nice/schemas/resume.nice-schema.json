@@ -1,0 +1,12 @@
+{
+  "name": "resume",
+  "label": "Resume",
+  "fields": [
+    { "name": "summary", "type": "string" },
+    {
+      "name": "work",
+      "type": "array",
+      "items": { "type": "reference", "schema": "work-experience-item" }
+    }
+  ]
+}

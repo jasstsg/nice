@@ -1,0 +1,211 @@
+/* ===== Theme variables =====
+   Override any of these from a consumer-provided stylesheet (see the
+   "styleRoots" nice.config.json option) to re-theme without touching this
+   file - e.g. a file containing just `:root { --nice-accent: #ff6600; }`
+   is loaded after this one, so the cascade picks it up automatically. */
+:root {
+  --nice-radius: 4px;
+  --nice-radius-sm: 3px;
+  --nice-radius-lg: 6px;
+  --nice-font: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --nice-font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  /* Spacing scale - used for margin/padding/gap throughout. Named by pixel
+     value rather than an abstract index (sm/md/lg) so it's obvious which
+     rule uses which step. */
+  --nice-space-3: 3px;
+  --nice-space-4: 4px;
+  --nice-space-6: 6px;
+  --nice-space-8: 8px;
+  --nice-space-10: 10px;
+  --nice-space-12: 12px;
+  --nice-space-14: 14px;
+  --nice-space-16: 16px;
+  --nice-space-18: 18px;
+  --nice-space-20: 20px;
+  --nice-space-24: 24px;
+  --nice-space-32: 32px;
+
+  /* Sizing */
+  --nice-input-max-width: 420px;
+  --nice-panel-min-width: 320px;
+  --nice-editor-min-height: 380px;
+  --nice-sidebar-min-width: 220px;
+  --nice-sidebar-max-width: 420px;
+
+  --nice-transition: 0.3s;
+
+  /* Main (light) surface */
+  --nice-bg: #fafafa;
+  --nice-bg-subtle: #f0f0f0;
+  --nice-text: #1a1a1a;
+  --nice-text-secondary: #555;
+  --nice-border: #ccc;
+  --nice-border-subtle: #e2e2e2;
+  --nice-border-faint: #eee;
+  --nice-muted: #888;
+  --nice-disabled-text: #999;
+  --nice-white: #fff;
+
+  /* Sidebar (dark) surface */
+  --nice-sidebar-bg: #1f2430;
+  --nice-sidebar-bg-hover: #2c3446;
+  --nice-sidebar-bg-active: #384056;
+  --nice-sidebar-text: #cfd6e4;
+  --nice-sidebar-text-muted: #9aa4bb;
+  --nice-sidebar-text-faint: #6b7488;
+  --nice-sidebar-link: #8fb3ff;
+  --nice-sidebar-link-hover: #b8d0ff;
+
+  /* Accent / semantic colors */
+  --nice-accent: #2952a3;
+  --nice-accent-hover: #1f3f80;
+  --nice-accent-bg: #e3ebfa;
+  --nice-accent-bg-hover: #eef2fa;
+  --nice-danger: #b23a3a;
+  --nice-danger-hover: #8f2e2e;
+  --nice-schema-accent: #a3572c;
+  --nice-schema-accent-bg: #fbe7d8;
+}
+
+/* ===== Reset & base ===== */
+* { box-sizing: border-box; }
+body {
+  font-family: var(--nice-font);
+  margin: 0;
+  color: var(--nice-text);
+  background: var(--nice-bg);
+}
+.app { display: flex; min-height: 100vh; }
+
+/* ===== Sidebar =====
+   Sized to fit its widest content (so content-tree names don't wrap)
+   rather than a fixed width, clamped to a reasonable min/max range. */
+.sidebar {
+  width: max-content;
+  min-width: var(--nice-sidebar-min-width);
+  max-width: var(--nice-sidebar-max-width);
+  flex-shrink: 0;
+  background: var(--nice-sidebar-bg);
+  color: var(--nice-white);
+  padding: var(--nice-space-20);
+}
+.sidebar h1 { font-size: 1.2rem; margin: 0 0 var(--nice-space-4); }
+.sidebar .hint { font-size: 0.78rem; line-height: 1.4; color: var(--nice-sidebar-text-muted); margin: 0 0 var(--nice-space-16); }
+.sidebar .hint code { background: var(--nice-sidebar-bg-hover); padding: 1px var(--nice-space-4); border-radius: var(--nice-radius-sm); font-size: 0.75rem; }
+.nav-btn {
+  display: block; width: 100%; text-align: left; padding: var(--nice-space-8) var(--nice-space-10);
+  margin-bottom: var(--nice-space-4); margin-right: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  background: transparent; border: none; color: var(--nice-sidebar-text); cursor: pointer;
+  border-radius: var(--nice-radius); font-size: 0.95rem;
+}
+.nav-btn:hover { background: var(--nice-sidebar-bg-hover); color: var(--nice-white); }
+.sidebar-divider { border-top: 1px solid var(--nice-sidebar-bg-active); margin: var(--nice-space-12) 0; }
+
+/* ===== Tabs ===== */
+.tabs { display: flex; gap: var(--nice-space-4); margin-bottom: var(--nice-space-4); }
+.tab-btn {
+  flex: 1; text-align: center; padding: var(--nice-space-6) var(--nice-space-4); font-size: 0.8rem; background: var(--nice-sidebar-bg-hover);
+  color: var(--nice-sidebar-text); border: none; border-radius: var(--nice-radius); cursor: pointer;
+}
+.tab-btn:hover { background: var(--nice-sidebar-bg-active); }
+.tab-btn.active { background: var(--nice-accent); color: var(--nice-white); }
+
+/* ===== Main panel ===== */
+.main { flex: 1; padding: var(--nice-space-24); display: flex; gap: var(--nice-space-32); align-items: flex-start; flex-wrap: wrap; }
+.panel { flex: 1; min-width: var(--nice-panel-min-width); }
+.panel h2 { margin-top: 0; }
+.placeholder { color: var(--nice-muted); font-style: italic; }
+
+/* ===== Badges (content/schema editor indicator) ===== */
+.content-badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+  color: var(--nice-accent); background: var(--nice-accent-bg); padding: var(--nice-space-3) var(--nice-space-8); border-radius: var(--nice-radius-sm); margin-bottom: var(--nice-space-10);
+}
+.schema-badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+  color: var(--nice-schema-accent); background: var(--nice-schema-accent-bg); padding: var(--nice-space-3) var(--nice-space-8); border-radius: var(--nice-radius-sm); margin-bottom: var(--nice-space-10);
+}
+
+/* ===== Lists & search ===== */
+.item-list { list-style: none; padding: 0; margin: var(--nice-space-12) 0; }
+.item-list li { padding: var(--nice-space-6) 0; border-bottom: 1px solid var(--nice-border-subtle); display: flex; justify-content: space-between; align-items: center; }
+.item-list a { color: var(--nice-accent); text-decoration: none; }
+.item-list a:hover { text-decoration: underline; }
+
+.picker-search {
+  width: 100%; max-width: var(--nice-input-max-width); padding: var(--nice-space-6) var(--nice-space-8); border: 1px solid var(--nice-border); border-radius: var(--nice-radius);
+  font-size: 0.95rem; margin-bottom: var(--nice-space-4);
+}
+
+/* ===== Form fields ===== */
+.field { margin-bottom: var(--nice-space-14); }
+.field > label { display: block; font-weight: 600; margin-bottom: var(--nice-space-4); font-size: 0.9rem; text-transform: capitalize; }
+.field input[type="text"], .field input[type="number"], .field select {
+  width: 100%; max-width: var(--nice-input-max-width); padding: var(--nice-space-6) var(--nice-space-8); border: 1px solid var(--nice-border); border-radius: var(--nice-radius); font-size: 0.95rem;
+}
+.field input[type="checkbox"] { width: 18px; height: 18px; }
+
+.json-editor {
+  width: 100%; min-height: var(--nice-editor-min-height); font-family: var(--nice-font-mono);
+  font-size: 0.85rem; padding: var(--nice-space-10); border: 1px solid var(--nice-border); border-radius: var(--nice-radius); resize: vertical; tab-size: 2;
+}
+.path-display {
+  font-family: var(--nice-font-mono); font-size: 0.85rem;
+  color: var(--nice-text-secondary); background: var(--nice-bg-subtle); padding: var(--nice-space-6) var(--nice-space-8); border-radius: var(--nice-radius);
+}
+
+/* ===== Arrays & nested objects ===== */
+.nested { border-left: 3px solid var(--nice-border-subtle); padding-left: var(--nice-space-14); margin-top: var(--nice-space-6); }
+.array-box { border: 1px dashed var(--nice-border); padding: var(--nice-space-10); border-radius: var(--nice-radius-lg); background: var(--nice-white); }
+.array-row { display: flex; align-items: center; gap: var(--nice-space-8); margin-bottom: var(--nice-space-8); padding-bottom: var(--nice-space-8); border-bottom: 1px solid var(--nice-border-faint); }
+.array-row:last-child { border-bottom: none; }
+.array-row > * { flex-shrink: 0; }
+.array-row .field { flex: 1; margin-bottom: 0; }
+
+/* ===== Buttons ===== */
+button {
+  cursor: pointer; padding: var(--nice-space-6) var(--nice-space-12); border: 1px solid var(--nice-accent); background: var(--nice-accent); color: var(--nice-white);
+  border-radius: var(--nice-radius); margin-top: var(--nice-space-6); margin-right: var(--nice-space-6); font-size: 0.9rem;
+}
+button:hover { background: var(--nice-accent-hover); }
+button.danger { border-color: var(--nice-danger); background: var(--nice-danger); }
+button.danger:hover { background: var(--nice-danger-hover); }
+button.ghost { background: transparent; color: var(--nice-accent); }
+button.ghost:hover { background: var(--nice-accent-bg-hover); }
+
+/* ===== Status toast ===== */
+.status {
+  position: fixed; bottom: var(--nice-space-16); right: var(--nice-space-16); background: var(--nice-sidebar-bg); color: var(--nice-white);
+  padding: var(--nice-space-8) var(--nice-space-14); border-radius: var(--nice-radius); font-size: 0.85rem; opacity: 0; transition: opacity var(--nice-transition);
+  pointer-events: none;
+}
+.status.visible { opacity: 1; }
+.error-text { color: var(--nice-danger); font-size: 0.9rem; }
+
+/* ===== Tree (content/schema browser, details/summary based) ===== */
+details { margin-bottom: var(--nice-space-4); }
+details summary {
+  display: block; cursor: pointer; font-weight: 600; padding: var(--nice-space-4) 0; list-style: none;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▸ "; }
+details[open] > summary::before { content: "▾ "; }
+
+.tree-children { margin-left: var(--nice-space-18); border-left: 1px dashed var(--nice-border-subtle); padding-left: var(--nice-space-12); }
+.tree-file { padding: var(--nice-space-3) 0; }
+.tree-file a { display: block; color: var(--nice-accent); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tree-file a:hover { text-decoration: underline; }
+.tree-file-unknown { color: var(--nice-disabled-text) !important; cursor: default !important; text-decoration: none !important; }
+.tree-empty { color: var(--nice-disabled-text); font-size: 0.85rem; font-style: italic; padding: var(--nice-space-3) 0; }
+
+/* Dark-sidebar variant of the tree above (sits inside .sidebar, needs
+   light-on-dark colors instead of the base tree's dark-on-light ones). */
+.sidebar-tree { max-height: calc(100vh - 220px); overflow-y: auto; }
+.sidebar-tree summary { color: var(--nice-sidebar-text); }
+.sidebar-tree .tree-children { border-left-color: var(--nice-sidebar-bg-active); }
+.sidebar-tree .tree-file a { color: var(--nice-sidebar-link); }
+.sidebar-tree .tree-file a:hover { color: var(--nice-sidebar-link-hover); }
+.sidebar-tree .tree-file-unknown { color: var(--nice-sidebar-text-faint) !important; }
+.sidebar-tree .tree-empty { color: var(--nice-sidebar-text-faint); }

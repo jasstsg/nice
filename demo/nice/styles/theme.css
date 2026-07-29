@@ -1,0 +1,7 @@
+/* Example override - any file placed under a configured styleRoot gets
+   loaded after nice's built-in stylesheet, so redeclaring variables here
+   is enough to re-theme without forking anything. */
+:root {
+  --nice-accent: #1b8a5a;
+  --nice-accent-hover: #146b45;
+}
