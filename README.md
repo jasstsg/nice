@@ -8,7 +8,7 @@ There's no database or hosted service. Content lives as plain JSON files in your
 ## Installation
 
 ```bash
-npm install --save-dev nice
+npm install --save-dev @jasstsg/nice
 ```
 
 ## Quick start
