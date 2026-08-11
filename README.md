@@ -191,7 +191,7 @@ Because discovery works off the `$niceSchema` key rather than file location, a c
 ## The UI
 
 - **Content editor** tab — the sidebar shows a live tree of everything under your `contentRoots`. Click any recognized file to edit it right there in the main panel (no popups, no separate pages). **+ New** opens a type-to-filter list of schemas to create from.
-- **Schema editor** tab — the sidebar shows a tree of your `.nice-schema.json` files. Schemas are edited as raw JSON (with server-side validation on save) rather than a visual builder, since field shapes vary enough by type that a form-based editor would add more complexity than it saves for now.
+- **Schema editor** tab — the sidebar shows a tree of your `.nice-schema.json` files. Schemas are built with a form (add/reorder/remove fields, pick each field's type and its type-specific options) rather than hand-written JSON — if you ever want to edit the JSON directly, the files are plain text, so your regular editor works too.
 - A small **CONTENT** / **SCHEMA** badge on whatever's open in the main panel makes it unambiguous which kind of thing you're editing.
 
 ## Using the content in your app

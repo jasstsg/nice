@@ -18,7 +18,7 @@
     "build:frontend": "vite build",
     "build:demo": "rm -rf demo/node_modules/nice && cd demo && npm install",
     "build": "npm run build:server && npm run build:frontend && npm run build:demo",
-    "deploy": "npm run build && npm publish --access public"
+    "deploy": "npm version patch && npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
